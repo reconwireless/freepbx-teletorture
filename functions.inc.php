@@ -235,4 +235,37 @@ function teletorture_destinations(){
       ),
    );
 }
+function teletortureoptions_getconfig() {
+	#print_r($results);
+	#die();
+	require_once 'DB.php';
+	$sql = "SELECT * FROM teletortureoptions LIMIT 1";
+	$results= sql($sql, "getAll");
+	$tmp = $results[0][4];
+	$tmp = eregi_replace('"', '', $tmp);
+	$tmp = eregi_replace('>', '', $tmp);
+	$res = explode('<', $tmp);
+	$results[0][] = trim($res[1]);
+	$results[0][] = trim($res[0]);
+	return $results[0];
+}
+
+function teletortureoptions_saveconfig() {
+
+	require_once 'DB.php';
+
+	# clean up
+	$e = mysql_escape_string($_POST['teletortureemail']);
+	
+	
+
+
+	# Make SQL thing
+	$sql = "UPDATE `teletortureoptions` SET";
+	$sql .= " `teletortureemail`='{$teletortureemail}',";
+	$sql .= " LIMIT 1;";
+
+	sql($sql);
+	needreload();
+}
 ?>
