@@ -1,4 +1,4 @@
-Installing It's Lenny Module<br>
+Installing Teletorture<br>
 <h5>Telemarketer Revenge</h5>
 This module will record calls please make sure you are not breaking the laws of your State/Region/Territory/Country by doing so.<br>
 <?php
@@ -11,6 +11,13 @@ if ( (isset($amp_conf['ASTVARLIBDIR'])?$amp_conf['ASTVARLIBDIR']:'') == '') {
 
 ?><br>Installing Default Configuration values.<br>
 <?php
+
+$sql ="INSERT INTO teletortureoptions (teletortureemail) ";
+$sql .= "               VALUES ('pmcnair@reconwireless.com')";
+$check = $db->query($sql);
+if (DB::IsError($check)) {
+        die_freepbx( "Can not create default values in `teletortureoptions` table: " . $check->getMessage() .  "\n");
+}
 
 
 // Add dialplan include to asterisk conf file

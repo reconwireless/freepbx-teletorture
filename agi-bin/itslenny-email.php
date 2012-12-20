@@ -18,13 +18,13 @@ if (!@include_once(getenv('FREEPBX_CONF') ? getenv('FREEPBX_CONF') : '/etc/freep
 include_once('/etc/asterisk/freepbx.conf');
 }
 // get user data from module
-$date = teletortureoptions_getconfig();
+$teletortureemail = teletortureoptions_getconfig();
 //*** end code added for #module compatibility      
 
 // set up the email address to receive the alert email
-$report_email = $teletortureemail;
+$report_email = $teletortureemail [0];
 $subject = "Teleturture";
-$email_content = "Teletorture Notification";
+$email_content = "Test";
 
 
 // No need to edit below, unless you need or want.
